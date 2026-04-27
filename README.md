@@ -1,0 +1,161 @@
+<div align="center">
+
+# 📡 Telco Customer Churn Predictor
+
+**An end-to-end ML system that identifies at-risk telecom customers — from raw data to a live REST API and interactive dashboard.**
+
+[![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io)
+[![XGBoost](https://img.shields.io/badge/XGBoost-Gradient%20Boosting-orange)](https://xgboost.readthedocs.io)
+[![MLflow](https://img.shields.io/badge/MLflow-Experiment%20Tracking-0194E2?logo=mlflow)](https://mlflow.org)
+
+<!-- Add a demo GIF here once available -->
+<!-- ![Demo](assets/demo.gif) -->
+
+</div>
+
+---
+
+## 🧭 What This Project Does
+
+Telecom companies lose significant revenue when customers churn. This project builds a **production-style ML pipeline** that:
+
+1. Ingests raw customer data (demographics, usage, billing)
+2. Engineers features and trains an XGBoost classifier
+3. Tracks every experiment with MLflow
+4. Serves real-time predictions via a FastAPI backend
+5. Exposes an interactive Streamlit dashboard for business users
+
+> **Design choice:** The model is tuned for high recall (~0.83) over precision — it's more costly to miss a churner than to flag a false positive.
+
+---
+
+## 📊 Model Performance
+
+| Metric    | Score |
+|-----------|-------|
+| Precision | ~0.48 |
+| Recall    | ~0.83 |
+| F1 Score  | ~0.61 |
+| ROC-AUC   | ~0.83 |
+
+The high recall / moderate precision trade-off is intentional — in churn use cases, a missed churner (false negative) costs more than a wrongly flagged loyal customer (false positive). Retention outreach is cheap; losing a customer is not.
+
+---
+
+## 🏗️ Architecture
+
+```
+Raw CSV → Preprocessing → Feature Engineering → XGBoost Training
+              ↓                                        ↓
+       Feature columns                          MLflow Tracking
+       saved for reuse                               ↓
+              └─────────────── FastAPI ──────────────┘
+                                   ↓
+                            Streamlit UI
+```
+
+**Train-serve consistency** is enforced by saving the exact feature column list at training time and reloading it at inference — preventing silent schema drift bugs.
+
+---
+
+## 📂 Project Structure
+
+```
+ml/
+├── data/
+│   └── raw/                  # Source dataset (Telco-Customer-Churn.csv)
+├── scripts/
+│   └── run_pipeline.py       # End-to-end training entrypoint
+├── src/
+│   ├── data/                 # Data loading & preprocessing
+│   ├── features/             # Feature engineering (binary + one-hot encoding)
+│   ├── models/               # XGBoost training logic
+│   ├── serving/              # Inference pipeline
+│   └── app/
+│       ├── app.py            # FastAPI backend
+│       └── main.py           # Streamlit frontend
+├── mlruns/                   # MLflow experiment artifacts
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## ⚙️ Setup
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/your-username/telco-churn-predictor.git
+cd telco-churn-predictor
+
+# 2. Create and activate a virtual environment
+python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # macOS/Linux
+
+# 3. Install dependencies
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Usage
+
+### Train the model
+```bash
+python scripts/run_pipeline.py \
+  --input data/raw/Telco-Customer-Churn.csv \
+  --target Churn
+```
+MLflow will log metrics, parameters, and the trained model artifact.
+
+### Start the API
+```bash
+uvicorn src.app.app:app --reload
+```
+Swagger docs available at `http://127.0.0.1:8000/docs`
+
+### Launch the dashboard
+```bash
+streamlit run src.app.main.py
+```
+Opens at `http://localhost:8501`
+
+---
+
+## 🧩 Key Engineering Decisions
+
+| Decision | Why |
+|----------|-----|
+| **Saved feature columns** | Prevents train-serve skew — inference uses the exact schema seen at training |
+| **MLflow tracking** | Reproducible experiments; easy to compare runs and load artifacts |
+| **FastAPI + Streamlit split** | Clean separation of backend logic from UI; API can be consumed independently |
+| **Recall-optimized threshold** | Aligns with business cost asymmetry in churn scenarios |
+
+---
+
+## 🚧 Roadmap
+
+- [ ] Prediction probability visualization in the dashboard
+- [ ] Dockerize the full stack
+- [ ] Deploy on Render / AWS (EC2 or Lambda)
+- [ ] Add SHAP-based feature importance explanations
+- [ ] Improve precision via threshold tuning or cost-sensitive learning
+- [ ] Add authentication to the API
+
+---
+
+## 👨‍💻 Author
+
+**Sonu Kumar** — AI/ML Engineer
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin)](https://linkedin.com/in/your-profile)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?logo=github)](https://github.com/your-username)
+
+---
+
+<div align="center">
+  If this project helped you, consider giving it a ⭐ — it helps others find it!
+</div>

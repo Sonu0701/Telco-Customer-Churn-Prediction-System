@@ -1,0 +1,21 @@
+# OS files
+.DS_Store
+
+# Editor
+.vscode/
+
+# Gradio temp
+.gradio/
+
+# ML artifacts
+feature_columns.txt
+mlruns/
+src/serving/model/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Data
+data/raw/

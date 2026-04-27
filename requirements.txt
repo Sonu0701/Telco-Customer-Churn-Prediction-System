@@ -1,0 +1,29 @@
+# Core ML
+numpy==1.26.4
+pandas==2.1.4
+scikit-learn==1.5.2
+xgboost==3.0.3
+
+# Visualization (optional)
+matplotlib==3.10.5
+seaborn==0.13.2
+
+# MLOps
+mlflow==2.14.1
+
+# API
+fastapi==0.115.0
+uvicorn==0.30.5
+pydantic==2.8.2
+
+# UI (you will use this)
+streamlit
+
+# Utils
+python-dotenv==1.0.1
+requests==2.32.4
+tqdm==4.67.1
+joblib==1.4.2
+
+# Validation (important for your project)
+great_expectations
