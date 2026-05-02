@@ -1,2 +1,24 @@
-data/
+# Virtual environments
+venv/
+.venv/
+
+# Jupyter
 notebooks/
+.ipynb_checkpoints/
+
+# Editor / OS
+.vscode/
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Environment
+.env
+
+# Logs
+*.log
+
+# Local Streamlit secrets only
+.streamlit/secrets.toml

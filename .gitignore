@@ -4,18 +4,38 @@
 # Editor
 .vscode/
 
-# Gradio temp
-.gradio/
+# Streamlit local secrets only
+.streamlit/secrets.toml
 
-# ML artifacts
-feature_columns.txt
+# MLflow experiment logs (ignore full history)
 mlruns/
-src/serving/model/
+
+# Ignore old duplicate model
+src/serving/model/2ac205f95a264d49b964ab362fe5f4e6/
+
+# Keep deployable production model files tracked
+# feature_columns.txt
+# src/serving/model/
 
 # Python
 venv/
+.venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/
+notebooks/mlruns/
 
 # Data
+data/
 data/raw/
+
+# Environment variables
+.env
+
+# Logs
+*.log
