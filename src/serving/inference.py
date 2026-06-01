@@ -31,10 +31,18 @@ try:
     if not os.path.exists(feature_file):
         feature_file = os.path.join(os.path.dirname(MODEL_DIR), "feature_columns.txt")
 
+    # If still not found → use root level file
+    if not os.path.exists(feature_file):
+        feature_file = "./feature_columns.txt"
+
+    # If still not found → use /app root
+    if not os.path.exists(feature_file):
+        feature_file = "/app/feature_columns.txt"
+
     with open(feature_file) as f:
         FEATURE_COLS = [ln.strip() for ln in f if ln.strip()]
 
-    print(f"✅ Loaded {len(FEATURE_COLS)} feature columns")
+    print(f"✅ Loaded {len(FEATURE_COLS)} feature columns from {feature_file}")
 
 except Exception as e:
     raise Exception(f"❌ Failed to load feature columns: {e}")
