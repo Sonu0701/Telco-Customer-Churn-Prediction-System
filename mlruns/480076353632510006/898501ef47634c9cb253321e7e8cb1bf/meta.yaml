@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Sonu Kumar/OneDrive/Desktop/Customer-Churn-ML/ml/mlruns/480076353632510006/898501ef47634c9cb253321e7e8cb1bf/artifacts
+end_time: 1777030409793
+entry_point_name: ''
+experiment_id: '480076353632510006'
+lifecycle_stage: active
+run_id: 898501ef47634c9cb253321e7e8cb1bf
+run_name: shivering-roo-186
+run_uuid: 898501ef47634c9cb253321e7e8cb1bf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777030403477
+status: 3
+tags: []
+user_id: Sonu Kumar

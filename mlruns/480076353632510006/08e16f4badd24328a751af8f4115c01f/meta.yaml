@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Sonu Kumar/OneDrive/Desktop/Customer-Churn-ML/ml/mlruns/480076353632510006/08e16f4badd24328a751af8f4115c01f/artifacts
+end_time: 1777030928122
+entry_point_name: ''
+experiment_id: '480076353632510006'
+lifecycle_stage: active
+run_id: 08e16f4badd24328a751af8f4115c01f
+run_name: thundering-hare-933
+run_uuid: 08e16f4badd24328a751af8f4115c01f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777030923142
+status: 3
+tags: []
+user_id: Sonu Kumar

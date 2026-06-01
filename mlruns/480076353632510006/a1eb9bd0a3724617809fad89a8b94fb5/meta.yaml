@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Sonu Kumar/OneDrive/Desktop/Customer-Churn-ML/ml/mlruns/480076353632510006/a1eb9bd0a3724617809fad89a8b94fb5/artifacts
+end_time: 1777030896247
+entry_point_name: ''
+experiment_id: '480076353632510006'
+lifecycle_stage: active
+run_id: a1eb9bd0a3724617809fad89a8b94fb5
+run_name: intelligent-jay-480
+run_uuid: a1eb9bd0a3724617809fad89a8b94fb5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777030889192
+status: 3
+tags: []
+user_id: Sonu Kumar
